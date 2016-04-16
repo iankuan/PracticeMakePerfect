@@ -16,7 +16,7 @@ void (* your_num( int num, void(* func)( int))) (int)
   printf("Show your num is %d\n", num);
   
   //TODO: All i want to know
-  my_num( num);
+  func( num);
   //Yu, I was confused by the argument of function pointer and fuction pointer
 
   
