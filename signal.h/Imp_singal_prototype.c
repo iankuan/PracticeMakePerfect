@@ -8,7 +8,7 @@ void my_num( int ynum)
   printf("hey hey My num alway bigger 1 than you : %d\n", ynum + 1);
 }
 
-void dummy_funct() {}
+void Print_funct( int printnum) { printf("Print %d\n", printnum);}
 
 //TODO:IMPORTANT This is a function pointer with two argument(int and func) and this function pointer
 void (* your_num( int num, void(* func)( int))) (int)
@@ -21,7 +21,7 @@ void (* your_num( int num, void(* func)( int))) (int)
 
   
   //TODO:I can also return a function poiner
-  return dummy_funct;
+  return Print_funct;
 }
 
 
@@ -31,6 +31,7 @@ int main()
   void (* f_ptr)(int);
 
   f_ptr = your_num( num, my_num);
+  f_ptr(9999999);
 
   return 0;
 }
