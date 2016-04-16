@@ -1,0 +1,29 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ns/call  ns/call  name    
+ 58.34      0.44     0.44 10000000    44.34    44.34  main
+ 37.12      0.73     0.28                             __libc_csu_init
+  5.30      0.77     0.04                             _fini
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 1.31% of 0.77 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     63.2    0.04    0.44                 _fini [1]
+                0.44    0.00 10000000/10000000     main [2]
+-----------------------------------------------
+                0.44    0.00 10000000/10000000     _fini [1]
+[2]     57.9    0.44    0.00 10000000         main [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]     36.8    0.28    0.00                 __libc_csu_init [3]
+-----------------------------------------------
+
+Index by function name
+
+   [3] __libc_csu_init         [1] _fini                   [2] main

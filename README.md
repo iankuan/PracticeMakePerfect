@@ -1,6 +1,3 @@
-********************************************************
-*                                                      *
-*     Author:   Yen-Kuan Wu                            *
-*     Purpose:  Practice C make perfect C programer    *
-*                                                      *
-********************************************************
+Author:   Yen-Kuan Wu
+
+Purpose:  Practice C make perfect C programer
