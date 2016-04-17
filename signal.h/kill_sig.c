@@ -22,6 +22,10 @@ int main()
     sleep(1);
     if( kill( pd, SIGINT) < 0)
       assert("kill function return error");
+    /*return 0;*///return will destory this both parent and child process
+    /*TODO: if the parent process finish( return 0), the process will exit, but the child process is in infinite loop, it will be a zombie process occupy the CUP*/
+    sleep(1);//give the time for ptr_sig
+    kill( pd, SIGKILL);//kill it
   }
   else if( pd == 0)
   {
@@ -30,4 +34,3 @@ int main()
     while(1) ;
   }
 }
-    
