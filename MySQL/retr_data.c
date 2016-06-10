@@ -53,15 +53,24 @@ int main( int argc, char* argv[])
   int num_fields = mysql_num_fields(result);
 
   MYSQL_ROW row;
+	MYSQL_FIELD *field;
+
   int i;
   while ((row = mysql_fetch_row(result))) 
-  { 
+  {
       for( i = 0; i < num_fields; i++) 
-      { 
+      {
+					if( i == 0)
+					{
+						while( field = mysql_fetch_field( result))
+							printf("%s ", field->name);
+						printf("\n");
+					}
+
           printf("%s ", row[i] ? row[i] : "NULL"); 
       } 
-          printf("\n"); 
   }
+	printf("\n");
   
   mysql_free_result(result);
 	mysql_close( con_hdlr);
