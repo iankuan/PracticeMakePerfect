@@ -1,6 +1,6 @@
 #define _GNU_SOURCE
 #include <stdio.h>
-#include <stdint.h>
+//#include <stdint.h>
 #include <dlfcn.h>
 
 void *dlsym( void *handle, const char* name)

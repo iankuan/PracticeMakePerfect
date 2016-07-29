@@ -14,3 +14,6 @@ I follow the web code, but i get infinite loop ...
 	`LD_PRELOAD=$PWD/libproc2.so ./a.out`
 
 After I first declare the LD_PRELOAD `LD_PRELOAD=$PWD/libproc2.so`, then we can wrok with once QQ
+
+
+NOTICE: `export` will put the variable to the current bash!!! take care of that do something assign without it.

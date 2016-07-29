@@ -1,7 +1,8 @@
 #define __USE_GNU
 #include <stdio.h>
-#include <stdlib.h>
-#include <dlfcn.h>
+/*There is no needed, example is error*/
+//#include <stdlib.h> 
+//#include <dlfcn.h>
 
 extern void *__libc_dlsym( void *, const char *);
 
