@@ -15,7 +15,9 @@ message(${${foo}})
 
 message(\nSTRING_LIST\n)
 set(foo this is list)
+message(${foo})
 set(foo this;is;a;list)
+message(${foo})
 
 #Quoted String
 
@@ -62,3 +64,86 @@ message(\nMATH\n)
 
 math(EXPR var "1+2*3")
 message("var = ${var}")
+
+#Condition Flow: if else
+
+message(\n"Condition Flow: if, else"\n)
+
+if(WIN32)
+	message("is WIN32!")
+	message("is WIN32!")
+else()
+	message("Not WIN32!")
+	message("Not WIN32!")
+endif()
+
+message("\nfoo = ${foo}")
+message("bar = ${bar}")
+
+message("if(foo AND bar) will return True or False, so it will be true")
+message("Inside if condition, foo will be \${foo}")
+if(foo AND bar)
+	message(True)
+else()
+	message(False)
+endif()
+
+#LOOP:foreach while
+
+message("LOOP: foreach while")
+
+set(V alpha beta gamma)
+message("V = ${V}")
+
+message("\nforeach(i \${V})")
+foreach(i ${V})
+	message(${i})
+endforeach()
+
+set(num 3)
+
+message(While_Loop)
+while(num GREATER 0 AND num LESS 11)
+	message("hi ${num}")
+	math(EXPR num "${num}+1")
+endwhile()
+
+#Macro, Function
+
+message("\nMacro Function\n")
+
+macro(mac MEG)
+	set(k ${MEG})
+	message("Macro ${MEG}")
+endmacro()
+
+function(func ARG)
+	set(k ${ARG})
+	message("Arg ${ARG}")
+endfunction()
+
+message("mac(\"from mac\")")
+mac("from mac")
+message("func(\"from func\")")
+func("from func")
+
+message("Function set local var, Macro set global var, so k = ${k}")
+
+#Logic expression
+
+message("\nLogic Expression\n")
+message("if(NOT <expr>)")
+message("if(<expr1> AND <expr2>)")
+message("if(<expr1> OR <expr2>)")
+
+message("Nuber Comparsion Expression: LESS, GREATER, EQUAL")
+
+message("#TODO: String comparsion HOW!")
+message("String Comparsion Expression: STRLESS, STRGREATER, STREQUAL")
+
+message("\nif(variable MATCHES regex)\nif(string MATCHES regex)")
+
+message("\nif(EXIST file-name|directory-name)\nmore than IS_NEWER_THAN, IS_ABSOLUTE")
+
+message("if(COMMAND command-name) => function or macro?")
+message("if(DEFINED variable-name)")
