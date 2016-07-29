@@ -1,0 +1,64 @@
+#show
+
+message(\nSHOW\n)
+message(helloworld_interpreter)
+
+#varible
+
+message(\nVARIBLE\n)
+set(var hello)
+set(foo var)
+message(${foo})
+message(${${foo}})
+
+#string and list
+
+message(\nSTRING_LIST\n)
+set(foo this is list)
+set(foo this;is;a;list)
+
+#Quoted String
+
+message(\nQuoted_STRING\n)
+set(a alpha bata gramma)
+set(b "alpha bata gramma")
+
+set(c "alpha
+beta
+gamma"
+)
+
+message("a=${a}")
+message("b=${b}")
+message("c=${c}")
+
+#String_connect
+
+message(\nString_connect\n)
+set(a "alpha beta gamma")
+set(b "${a} delta")
+set(c ${a} "delta")
+
+message("b=${b}")
+message("c=${c}")
+
+#Escapes \t \n
+
+message(\nEscapes\n)
+
+set(bar "alpha beta gamma")
+message("\${bar}:${bar}")
+
+#Boolean
+
+message(\nBoolean\n)
+
+message("FALSE = OFF, FALSE, N. 0, ...")
+message("TRUE  = ON, TRUE, Y. 1, ...")
+
+#MATH
+
+message(\nMATH\n)
+
+math(EXPR var "1+2*3")
+message("var = ${var}")
