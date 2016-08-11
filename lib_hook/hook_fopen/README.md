@@ -1,4 +1,4 @@
-1.try direct way
+1.try direct way(It is already CORRECT)
 
 gcc -shared -fPIC fopen_h.c -o libfopen_h.so -ldl (Notice -ldl should be behind,then could be linked)<br/>
 LD_PRELOAD=libfopen_h.so ./main fopen_h.c

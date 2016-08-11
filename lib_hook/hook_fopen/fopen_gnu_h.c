@@ -9,8 +9,8 @@ FILE* fopen( const char* fname, const char* mode)
 
 	FILE* (* fopen_fn)( const char*, const char*) = NULL;
 	printf("Create the fopen_fn function pointer\n");
-	fopen_fn = dlsym( RTLD_NEXT, "dlsym");
+	fopen_fn = dlsym( RTLD_NEXT, "fopen");
 	printf("Return the fopen_fn function pointer\n");
 
-	return ( *fopen)( fname, mode);
+	return fopen_fn( fname, mode);
 }
