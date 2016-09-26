@@ -25,7 +25,7 @@ struct{
 	PTHREAD_MUTEX_INITIALIZER
 };
 
-void *produce( void*), *consume( void*);
+void *produce( void*), *consume( void*), consume_wait( int i);
 
 int main( int argc, char** argv)
 {
@@ -38,7 +38,7 @@ int main( int argc, char** argv)
 	nitems = Min( atoi( argv[1]), MAXNITEMS);
 	nthreads = Min( atoi( argv[2]), MAXNTHREADS);
 
-	pthread_setconcurrency( nthreads + 1);
+	pthread_setconcurrency( nthreads + 1);//
 
 	for ( int i = 0; i < nthreads; i++){
 		count[i] = 0;
@@ -47,12 +47,13 @@ int main( int argc, char** argv)
 		pthread_create( &tid_produce[i], NULL, &produce, &count[i]);
 	}
 
+	pthread_create( &tid_consume, NULL, &consume, NULL);
+
 	for ( int i = 0; i < nthreads; i++){
 		pthread_join( tid_produce[i], NULL);
 		printf("count[ %d] = %d\n", i, count[i]);
 	}
 
-	pthread_create( &tid_consume, NULL, &consume, NULL);
 	pthread_join( tid_consume, NULL);
 
 	return 0;
@@ -79,12 +80,30 @@ produce( void *arg)
 	}
 }
 
+void
+consume_wait( int i)
+{
+	while(1){
+		pthread_mutex_lock( &shared.mutex);
+
+		if( i < shared.nput){
+			pthread_mutex_unlock( &shared.mutex);
+			return;
+		}
+
+		pthread_mutex_unlock( &shared.mutex);
+	}
+}
+
 void *
 consume( void *arg)
 {
-	for( int i = 0; i < nitems; i++)
+	for( int i = 0; i < nitems; i++){
+		consume_wait( i);
+
 		if( shared.buff[i] != i)
 			printf( "buff[%d] = %d\n", i, shared.buff[i]);
+	}
 
 	return NULL;
 }
