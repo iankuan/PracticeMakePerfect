@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <tgmath.h>
 
+/* reference: http://www.robertgamble.net/2012/01/c11-generic-selections.html */
+
 /*
 _Generic( 'a', char: 1, int: 2, long: 3, default: 0)
 
@@ -45,7 +47,7 @@ int main( int argc, char* argv)
 	printnl( 123);
 	printnl( 1.234);
 
-	//printnl( "abc");
+	printnl( "abc");
 
 	return 0;
 }
