@@ -2,8 +2,8 @@ CC ?= gcc
 CPP ?= g++
 
 OBJ =
-EXEC = 
-SRC =
+EXEC = gdb_test
+SRC = gdb_test.c
 
 INC =
 LIB = 
@@ -23,4 +23,4 @@ $(EXEC): $(SRC)
 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-rm -rf $(EXEC) $(OBJ)
+	rm -rf $(EXEC) $(OBJ)
