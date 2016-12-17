@@ -18,4 +18,6 @@ int main()
     int B = 11;
     //float B = 11;
     printf("max(10, 11) = %d\n",max(A, B));
+
+    int arr[] = { [0 ... 5] = 1, [ 6 ... 100] = 2};
 }
