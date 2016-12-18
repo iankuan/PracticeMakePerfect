@@ -1,0 +1,4 @@
+define newdir
+    mkdir -p tmp
+    echo "I have the a tmp"
+endef

@@ -11,16 +11,38 @@ INC = include
 
 # TEST
 TEST = test.c
+LIST = c b a
 
 vpath %.c $(SRC)
 #vpath %.h $(INC)
 
 CFLAGS += -I $(INC)
 
-all: $(EXEC)
+
+COMM = command
+.PHONY: $(COMM)
+
+include command.rule
+
+# Specified Rule
+myfunc.o: CFLAGS += -g3
+main: CFLAGS += -g
+
+all: $(EXEC) $(COMM)
+
+$(COMM):
+	@$(call newdir);
+	@echo "(sort c b a) =>$(sort $(LIST))"; 
+	@echo "(shell ls) =>$(shell ls)";
+	@echo "(strip (LIST)) =>$(strip LIST)";
+	@echo "TEST: S(test.c:.c=.replace) =>$(TEST:.c=.replace)";
+	@echo "(patsubst %.c,%._patsubst,(TEST)) =>$(patsubst %.c,%._patsubst,$(TEST))";
+	@echo "(filiter a,(LIST)) =>$(filter a,$(LIST)))";
+	@echo "(filiter-out a,(LIST)) =>$(filter-out a,$(LIST)))";
+	@echo "(wildcard src/*.c) =>$(wildcard src/*.c)";
+	$(if $(filter $(MAKE_VERSION),4.0), $(warning WARNIGN version is truely 4.0 haha), $(error version not 4.0))
 
 main: main.c $(OBJ)
-	@echo "TEST: S(test.c:.c=.replace)"; echo "=> "$(TEST:.c=.replace); \
 	#@echo "we can use the default rule for compile. I don't write anything here, but it could work~!"
 	$(CC) $(CFLAGS) $^ -o $@
 
@@ -34,4 +56,4 @@ myfunc.o: %.o: %.c
 	$(CC) $(CFLAGS) -c $^
 
 clean:
-	$(RM) $(EXEC) $(OBJ)
+	$(RM) -rf $(EXEC) $(OBJ) tmp
