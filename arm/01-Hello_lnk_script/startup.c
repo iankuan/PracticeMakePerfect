@@ -18,6 +18,15 @@ extern uint32_t estack;
 
 void re_hdlr(void)
 {
+    uint32_t *_sidata = &sidata;
+    uint32_t *_sdata = &sdata;
+    uint32_t *_edata = &edata;
+    while (_sdata < _edata) *_sdata++ = *_sidata++;
+
+    uint32_t *_sbss = &sbss;
+    uint32_t *_ebss = &ebss;
+    while (_sbss < _ebss) *_sbss++ = 0;
+
     main(); ///start here
 }
 
