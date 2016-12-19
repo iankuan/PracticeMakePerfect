@@ -3,7 +3,7 @@
 #include "reg.h"
 #include "init.h"
 
-extern void ctx_sw(uint32_t *);
+extern uint32_t *ctx_sw(uint32_t *);
 extern void syscall();
 
 #define USART_SR_TXE ((uint16_t) 0x0080)
@@ -49,9 +49,9 @@ int main()
     stack_start[8] = (uint32_t) task0;
 
     puts("os main start\n");
-    ctx_sw(stack_start);
+    stack_start = ctx_sw(stack_start);
     puts("back 1st to os main\n");
-    ctx_sw(stack_start);
+    stack_start = ctx_sw(stack_start);
     puts("back 2st to os main\n");
     puts("go to infinite\n");
 
