@@ -12,6 +12,10 @@ SECTIONS
     {
         KEEP(*(.isr_vec))
         *(.text)
+        *(.text.*)
+        *(.rodata)
+        sromdev = .;
+        eromdev = .;
         sidata = .;
     } >FLASH
 
@@ -19,6 +23,7 @@ SECTIONS
     {
         sdata = .;
         *(.data)
+        *(.data.*)
         edata = .;
     } >SRAM
 
