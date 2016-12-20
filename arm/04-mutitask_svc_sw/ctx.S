@@ -12,6 +12,8 @@ ctx_sw:
     mov r0, #3 ///user+psp
     msr control, r0
 
+    isb ///Make sure the control is overrided
+
     /*load user state*/
     pop {r4-r11, lr}
 
@@ -30,6 +32,6 @@ svc_hdlr:
 
     /* load kernel state */
     pop {r4-r11, ip, lr}
-    msr psr, ip
+    msr psr_nzcvq, ip
 
     bx lr
