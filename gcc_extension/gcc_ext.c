@@ -7,6 +7,9 @@
                      (void)  (&_a == &_b);\
                      _a > _b ? _a : _b;})
 
+//varible length
+void foo(int s) { char str[s]; printf("LOCAL:sizeof(str) = %d\n", sizeof(str));}
+
 int main()
 {
     FOR
@@ -20,4 +23,8 @@ int main()
     printf("max(10, 11) = %d\n",max(A, B));
 
     int arr[] = { [0 ... 5] = 1, [ 6 ... 100] = 2};
+
+    foo(10);
+    //FIXME: fail... str is local varible
+    //printf("sizeof(str) = %d\n", sizeof(str));
 }
