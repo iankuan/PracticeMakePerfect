@@ -20,10 +20,9 @@ struct _st {
         int     a; \
         int     b; \
     }; \
-    /*\
-    struct _st1 var = { \///FIXME: Also failed...
-        .a = _a;\
-        .b = _b;\
+    /*struct _st1 var = { \
+        .a = _a,\
+        .b = _b,\
     }; \
     strcpy(var.str, _str);*/
    
@@ -42,13 +41,14 @@ struct _st {
 void func()
 {
     init_struct1(st1, "This is str", 10, 20);
+    init_struct1(st1, "str", 10, 20);///FIXME:Redefinition: It is a problem in Variable-len array redefinition
 }
 
 int main() {
 
     init_struct(st, "This is str", 10, 20);
 
-    func;
+    func();
 
     printf("Use GDB\n");
 
