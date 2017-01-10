@@ -20,7 +20,13 @@ struct _st {
         int     a; \
         int     b; \
     }; \
-    
+    /*\
+    struct _st1 var = { \///FIXME: Also failed...
+        .a = _a;\
+        .b = _b;\
+    }; \
+    strcpy(var.str, _str);*/
+   
 /*    struct _st1 var; \
     var.str = _str; \///FIXME: var.str is not assignable...
     var.a = _a;\
@@ -33,11 +39,16 @@ struct _st {
         .b   = _b, \
     };*/
 
+void func()
+{
+    init_struct1(st1, "This is str", 10, 20);
+}
+
 int main() {
 
     init_struct(st, "This is str", 10, 20);
 
-    init_struct1(st1, "This is str", 10, 20);
+    func;
 
     printf("Use GDB\n");
 
