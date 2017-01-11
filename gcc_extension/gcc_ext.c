@@ -5,7 +5,8 @@
 #define max(a, b) ({ __typeof__(a) _a = (a);\
                      __typeof__(b) _b = (b);\
                      (void)  (&_a == &_b);\
-                     _a > _b ? _a : _b;})
+                     __typeof__(a) _tmp = _a > _b ? _a : _b;\
+                     _tmp; })
 
 //varible length
 void foo(int s) { char str[s]; printf("LOCAL:sizeof(str) = %d\n", sizeof(str));}
