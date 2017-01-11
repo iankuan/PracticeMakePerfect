@@ -8,6 +8,8 @@
                      __typeof__(a) _tmp = _a > _b ? _a : _b;\
                      _tmp; })
 
+#define max3(a,b,c) max(a, max(b,c))
+
 //varible length
 void foo(int s) { char str[s]; printf("LOCAL:sizeof(str) = %d\n", sizeof(str));}
 
@@ -20,8 +22,10 @@ int main()
 
     int A = 10;
     int B = 11;
+    int C = 12;
     //float B = 11;
     printf("max(10, 11) = %d\n",max(A, B));
+    printf("max3(10, 11, 12) = %d\n",max3(A, B, C));
 
     int arr[] = { [0 ... 5] = 1, [ 6 ... 100] = 2};
 
