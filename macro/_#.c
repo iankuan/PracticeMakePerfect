@@ -18,5 +18,8 @@ int main()
      printf(SNUM( NUM(i)) "\n");
   for( i = 0; i < 10; i++)
     PRINT_NUM(i);
-  return 0;
+
+   //FIXME: Test `*(int *)`. Not worked!
+  //printf("sizeof(*(int *)) = %d\n", sizeof((*(int *))) );
+ return 0;
 }
