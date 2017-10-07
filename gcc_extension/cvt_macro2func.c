@@ -7,13 +7,18 @@
  *      2. statement expressions
  */
 
+struct obj {
+    void (*func)(void);
+};
+
 int main(void)
 {
-    void (*func)(void);
-    func = ({
+    struct obj objs = {
+        .func = ({
             void __null__(void) {printf("Hello World\n");}
             __null__;
-            });
+            }),
+    };
     /* 
     func = ({
             void __null__(void) {printf("Hello World\n");};// No matter append `;` at the end of func, all work
@@ -22,5 +27,5 @@ int main(void)
     */
 
 
-    func();
+    objs.func();
 }
