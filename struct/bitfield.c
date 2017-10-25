@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdint.h>
 
 typedef struct _test {
     int a0_12 :13;
@@ -28,4 +28,11 @@ int main() {
      printf("b(unsigned):(bitfiled would extend with zero)a0_12 = %d, a13 = %d, a14_15 = %d, a16_31 = %d\n", b.a0_12, b.a13, b.a14_15, b.a16_31);
     printf("b(unsigned):(bitfiled would extend with zero)a0_12 = %u, a13 = %u, a14_15 = %u, a16_31 = %u\n", b.a0_12, b.a13, b.a14_15, b.a16_31);
    printf("b(unsigned):(bitfiled would extend with zero)a0_12 =0x%X, a13 =0x%X, a14_15 =0x%X, a16_31 =0x%X\n", b.a0_12, b.a13, b.a14_15, b.a16_31);
+
+    int16_t    s = -128;
+    uint16_t  un =  255;
+	int i;
+	i  = printf("%d\n", s);
+	printf("int16 128: int %d uint %u printf()=%d\n", s, s, i);
+	printf("uint16 128: int %d uint %u\n", s, s);
 }
