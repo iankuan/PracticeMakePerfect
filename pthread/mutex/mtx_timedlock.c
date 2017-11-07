@@ -22,6 +22,7 @@ void func(void *arg) {
 
     if (msg != 0) {
         printf("msg = %d\n", msg);
+        /* pthread_mutex_timedlock() don't set errno automatically */
         errno = msg;
         perror("pthread_mutex_timedlock\n");
     }
@@ -40,6 +41,7 @@ int main(int argc, char *argv[]) {
     int msg = pthread_join(thrd, NULL);
     if (msg != 0) {
         printf("msg = %d\n", msg);
+        /* pthread_mutex_timedlock() don't set errno automatically */
         errno = msg;
         perror("pthread_join\n");
     }
